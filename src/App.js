@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useState } from "react";
+import "./App.css";
+import Body from "./component/Body";
+import Signup from "./component/signup";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Header from "./component/Header";
+import SingnIn from "./component/singnIn";
+import Cart from "./component/Cart";
 function App() {
+  const [isUserLogin, setIsUserLogin] = useState(true);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <div>
+          <Header isUserLogin={isUserLogin} />
+        </div>
+        <Routes>
+          <Route path="/" element={<Body />}></Route>
+          <Route path="/login" element={<SingnIn />}></Route>
+          <Route path="/signup" element={<Signup />}></Route>
+          <Route path="/cart" element={<Cart />}></Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
