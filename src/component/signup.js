@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -20,9 +22,11 @@ const Signup = () => {
 
   function handlesubmit() {
     postData();
+    navigate("/login");
   }
   return (
     <div>
+      <h1>SiGnUp Page</h1>
       <from onSubmit={handlesubmit}>
         <div>
           <label>UserName</label>

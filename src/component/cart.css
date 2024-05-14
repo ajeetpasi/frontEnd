@@ -1,0 +1,7 @@
+.cart {
+  display: flex;
+  gap: 20px;
+}
+.singlecart {
+  background-color: brown;
+}

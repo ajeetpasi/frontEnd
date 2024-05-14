@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import DataCard from "./DataCard";
 import Header from "./Header";
-
-const Body = () => {
+import "./body.css";
+const Body = ({ isUserLogin }) => {
   const [CardData, setCardData] = useState([]);
   //   console.log("CardData", CardData);
   useEffect(() => {
@@ -17,9 +17,9 @@ const Body = () => {
     setCardData(json);
   };
   return (
-    <div>
+    <div className="body">
       {CardData.map((item) => (
-        <DataCard datas={item} />
+        <DataCard datas={item} isUserLogin={isUserLogin} />
       ))}
     </div>
   );

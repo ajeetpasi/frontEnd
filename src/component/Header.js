@@ -1,21 +1,30 @@
 import React from "react";
-import { Link } from "react-router-dom";
-
-const Header = ({ isUserLogin }) => {
+import { Link, useNavigate } from "react-router-dom";
+import "./header.css";
+const Header = ({ isUserLogin, userName, handleLogout }) => {
   return (
-    <div>
+    <div className="header">
       <div>Logo</div>
-      {isUserLogin && (
-        <Link to="/cart">
-          <button>Cart</button>
-        </Link>
-      )}
-
-      <Link to="/login">
-        <button>Login</button>
-      </Link>
-
-      {isUserLogin && <button>UserName</button>}
+      <div>
+        {isUserLogin ? (
+          <>
+            <Link to="/cart">
+              <button>Cart</button>
+            </Link>
+            <Link to="/">
+              {" "}
+              <button onClick={handleLogout}>Logout</button>{" "}
+            </Link>
+          </>
+        ) : (
+          <>
+            <Link to="/login">
+              <button>Login</button>
+            </Link>
+          </>
+        )}
+        <button>{userName}</button>
+      </div>
     </div>
   );
 };
